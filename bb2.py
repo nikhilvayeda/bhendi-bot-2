@@ -32,19 +32,19 @@ async def on_message(message):
     elif str(message.content).lower().find('yalgaar hoe') != -1:
         await message.channel.send('Hoes mad :flushed:')
 
-    elif str(message.content).lower().find('carry tera baap hai') != -1:
+    elif str(message.content).lower()[:19] == 'carry tera baap hai':
         await message.channel.send('Ok mom')
 
-    elif str(message.content).lower().find('kurry tera baap hai') != 1:
+    elif str(message.content).lower()[:19] == 'kurry tera baap hai':
         await message.channel.send('Ok mom')
 
-    elif str(message.content).lower().find('curry bhoi tera baap hai') != -1:
+    elif str(message.content).lower()[:24] == 'curry bhoi tera baap hai':
         await message.channel.send('Ok mom')
 
-    elif str(message.content).lower().find('curry tera baap hai') != -1:
+    elif str(message.content).lower()[:19] == 'curry tera baap hai':
         await message.channel.send('Ok mom')
 
-    elif str(message.content).lower().find('keri tera baap hai') != -1:
+    elif str(message.content).lower()[:18] == 'keri tera baap hai':
         await message.channel.send('Ok mom https://tenor.com/view/carryminati-ajey-nagar-indian-you-tuber-carryminati-roast-carry-gif-17312966')
 
     elif str(message.content).lower()[:3] != 'six':
