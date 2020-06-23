@@ -69,7 +69,7 @@ async def on_message(message):
     elif str(message.content).lower()[:3] == 'sex':
         await message.channel.send('When?')
 
-    elif str(message.content).lower().find('general kenobi':) != -1
+    elif str(message.content).lower().find('general kenobi') != -1:
         await message.channel.send('**Hello there - Bhendi Bot v2.0 by Monke - General Kenobi**')
 
     elif str(message.content).lower().find('monke') != -1:
