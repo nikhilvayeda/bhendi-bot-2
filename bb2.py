@@ -14,119 +14,70 @@ async def on_message(message):
     if message.author.bot:
         return None
 
-    if message.content.startswith("Hi"):
+    if str(message.content).lower().find('hi') != -1:
         await message.channel.send('Hello!')
 
-    elif message.content.startswith("hi"):
-        await message.channel.send('Hello!')
-
-    elif message.content.startswith("Ooo"):
+    elif str(message.content).lower().find('ooo') != -1:
         await message.channel.send('Bhendi, bhendi!')
 
-    elif message.content.startswith("Hello"):
+    elif str(message.content).lower().find("hello") != -1:
         await message.channel.send('Hi!')
 
-    elif message.content.startswith("hello"):
-        await message.channel.send('Hi!')
-
-    elif message.content == "-top":
+    elif str(message.content).lower().find('-top') != -1:
         await message.channel.send(f"""**_Click the link to see the top members in Sai Station discord_** https://arcanebot.xyz/leaderboard/722336877524418620""")
 
-    elif message.content.startswith("Fuck haters"):
+    elif str(message.content).lower().find('fuck haters') != -1:
         await message.channel.send('Ab Saiman ki baari hai')
 
-    elif message.content.startswith("fuck haters"):
-        await message.channel.send('Ab Saiman ki baari hai')
-
-    elif message.content.startswith("Yalgaar hoe"):
+    elif str(message.content).lower().find('yalgaar hoe') != -1:
         await message.channel.send('Hoes mad :flushed:')
 
-    elif message.content.startswith("yalgaar hoe"):
-        await message.channel.send('Hoes mad :flushed:')
-
-    elif message.content.startswith('Carry tera baap hai'):
+    elif str(message.content).lower().find('carry tera baap hai') != -1:
         await message.channel.send('Ok mom')
 
-    elif message.content.startswith('carry tera baap hai'):
+    elif str(message.content).lower().find('kurry tera baap hai') != 1:
         await message.channel.send('Ok mom')
 
-    elif message.content.startswith('kurry tera baap hai'):
+    elif str(message.content).lower().find('curry bhoi tera baap hai') != -1:
         await message.channel.send('Ok mom')
 
-    elif message.content.startswith('curry bhoi tera baap hai'):
+    elif str(message.content).lower().find('curry tera baap hai') != -1:
         await message.channel.send('Ok mom')
 
-    elif message.content.startswith('curry tera baap hai'):
-        await message.channel.send('Ok mom')
-
-    elif message.content.startswith('keri tera baap hai'):
+    elif str(message.content).lower().find('keri tera baap hai') != -1:
         await message.channel.send('Ok mom https://tenor.com/view/carryminati-ajey-nagar-indian-you-tuber-carryminati-roast-carry-gif-17312966')
 
-    elif message.content.startswith('six'):
+    elif str(message.content).lower()[:3] != 'six':
         await message.channel.send('Teri shaadi fix :joy:')
 
-    elif message.content.startswith('Six'):
-        await message.channel.send('Teri shaadi fix :joy:')
-
-    elif message.content.startswith('Pencil'):
+    elif str(message.content).lower()[:6] == 'pencil':
         await message.channel.send('Teri shaadi cancel :joy:')
 
-    elif message.content.startswith('pencil'):
-        await message.channel.send('Teri shaadi cancel :joy:')
-
-    elif message.content.startswith('Ok mom'):
+    elif str(message.content).lower().find('ok mom') != -1:
         await message.channel.send('Wait thats illegal')
 
-    elif message.content.startswith('ok mom'):
-        await message.channel.send('Wait thats illegal')
-
-    elif message.content.startswith('I wanna kill myself'):
+    elif str(message.content).lower().find('i wanna kill myself') != -1:
         await message.channel.send('**Dont do it you have more to accomplish suicide help line India 091529 87821**')
 
-    elif message.content.startswith('i wanna kill myself'):
-        await message.channel.send('**Dont do it you have more to accomplish suicide help line India 091529 87821**')
-
-    elif message.content.startswith('uh oh'):
+    elif str(message.content).lower()[:5] == 'uh oh':
         await message.channel.send('Stinky')
 
-    elif message.content.startswith('Uh oh'):
-        await message.channel.send('Stinky')
-
-    elif message.content.startswith('Bruh'):
+    elif str(message.content).lower().find('bruh') != -1:
         await message.channel.send('Ok obama')
 
-    elif message.content.startswith('bruh'):
-        await message.channel.send('Ok obama')
-
-    elif message.content.startswith('Sex'):
+    elif str(message.content).lower()[:3] == 'sex':
         await message.channel.send('When?')
 
-    elif message.content.startswith('sex'):
-        await message.channel.send('When?')
-
-    elif message.content.startswith('General kenobi'):
+    elif str(message.content).lower().find('general kenobi') != -1:
         await message.channel.send('**Hello there - Bhendi Bot v2.0 by Monke - General Kenobi**')
 
-    elif message.content.startswith('general kenobi'):
-        await message.channel.send('**Hello there - Bhendi Bot v2.0 by Monke - General Kenobi**')
-
-    elif message.content.startswith('Monke'):
+    elif str(message.content).lower().find('monke') != -1:
         await message.channel.send('Monke seks :flushed:')
 
-    elif message.content.startswith('monke'):
-        await message.channel.send('Monke seks :flushed:')
-
-    elif message.content.startswith('Send nakade pic'):
+    elif str(message.content).lower().find("send nakade pic") != -1:
         await message.channel.send('No pervert')
 
-    elif message.content.startswith('send nakade pic'):
-        await message.channel.send('No pervert')
-
-    elif message.content.startswith('Send dunes'):
-        await message.channel.send('Here you go https://tenor.com/view/noodles-pasta-gif-4803871')
-
-    elif message.content.startswith('send dunes'):
+    elif str(message.content).lower().find('send dunes') != -1:
         await message.channel.send('here you go https://tenor.com/view/noodles-pasta-gif-4803871')
-
 
 client.run(os.getenv('token'))
