@@ -68,7 +68,7 @@ async def on_message(message):
     elif str(message.content).lower().find('bruh') != -1:
         await message.channel.send('Ok obama')
 
-    elif str(message.content).lower().find('sex'):
+    elif str(message.content).lower() == 'sex':
         await message.channel.send('When?')
 
     elif str(message.content).lower() == 'general kenobi':
