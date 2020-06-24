@@ -47,7 +47,7 @@ async def on_message(message):
     elif str(message.content).lower()[:18] == 'keri tera baap hai':
         await message.channel.send('Ok mom https://tenor.com/view/carryminati-ajey-nagar-indian-you-tuber-carryminati-roast-carry-gif-17312966')
 
-    elif str(message.content).lower()[:3] != 'six':
+    elif str(message.content).lower()[:3] == 'six':
         await message.channel.send('Teri shaadi fix :joy:')
 
     elif str(message.content).lower()[:6] == 'pencil':
