@@ -19,7 +19,8 @@ async def on_message(message):
 
     elif str(message.content).lower() == "=pass":
         role = discord.utils.get(message.guild.roles, name="nsfw pass")
-        await client.add_roles(message.author, role)
+        user = message.author
+        await user.add_roles(role)
         await message.channel.send("Given, enjoy.")
 
     elif str(message.content).lower().find('ooo') != -1:
