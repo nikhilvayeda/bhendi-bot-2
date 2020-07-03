@@ -6,7 +6,7 @@ client = discord.Client()
 
 @client.event
 async def on_ready():
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="Bhendi.mp3"))
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="bhendi.mp3"))
     print(f'We have logged in as {client.user}')
 
 @client.event
@@ -16,6 +16,11 @@ async def on_message(message):
 
     if str(message.content).lower() == "hi":
         await message.channel.send('Hello!')
+
+    elif str(message.content).lower() == "=pass":
+        role = discord.utils.get(message.guild.roles, name="nsfw pass")
+        await client.add_roles(message.author, role)
+        await message.channel.send("Given, enjoy.")
 
     elif str(message.content).lower().find('ooo') != -1:
         await message.channel.send('Bhendi, bhendi!')
@@ -82,5 +87,12 @@ async def on_message(message):
 
     elif str(message.content).lower() == 'send dunes':
         await message.channel.send('here you go https://tenor.com/view/noodles-pasta-gif-4803871')
+
+    elif str(message.content).lower() in ["porn", "p*rn"]:
+        embed = discord.Embed(title="P*rn? here you go")
+        embed.add_field(name='Check this out', value=f"""[latest collection](https://www.youtube.com/watch?v=vTIIMJ9tUc8)""")
+        await message.channel.send(embed=embed)
+
+
 
 client.run(os.getenv('token'))
