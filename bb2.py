@@ -23,6 +23,12 @@ async def on_message(message):
         await user.add_roles(role)
         await message.channel.send("Given, enjoy.")
 
+    elif str(message.content).lower() == "=nopass":
+        role = discord.utils.get(message.guild.roles, name="nsfw pass")
+        user = message.author
+        await user.remove_roles(role)
+        await message.channel.send("Removed pass.")
+
     elif str(message.content).lower().find('ooo') != -1:
         await message.channel.send('Bhendi, bhendi!')
 
@@ -93,7 +99,5 @@ async def on_message(message):
         embed = discord.Embed(title="P*rn? here you go")
         embed.add_field(name='Check this out', value=f"""[latest collection](https://www.youtube.com/watch?v=vTIIMJ9tUc8)""")
         await message.channel.send(embed=embed)
-
-
 
 client.run(os.getenv('token'))
