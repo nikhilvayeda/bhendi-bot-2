@@ -20,14 +20,20 @@ async def on_message(message):
     elif str(message.content).lower() == "=pass":
         role = discord.utils.get(message.guild.roles, name="nsfw pass")
         user = message.author
-        await user.add_roles(role)
-        await message.channel.send("Given, enjoy.")
+        try:
+            await user.add_roles(role)
+            await message.channel.send("Given, enjoy.")
+        except :
+            await message.channel.send("failed to give pass")
 
     elif str(message.content).lower() == "=nopass":
         role = discord.utils.get(message.guild.roles, name="nsfw pass")
         user = message.author
-        await user.remove_roles(role)
-        await message.channel.send("Removed pass.")
+        try:
+            await user.remove_roles(role)
+            await message.channel.send("Removed pass.")
+        except:
+            await message.channel.send('failed to remove pass')
 
     elif str(message.content).lower().find('ooo') != -1:
         await message.channel.send('Bhendi, bhendi!')
