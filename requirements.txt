@@ -1,3 +1,5 @@
 discord.py
-
 asyncio
+pymongo
+pymongo[srv]
+dnspython

@@ -1,12 +1,19 @@
 import discord
 import asyncio
 import os
+import pymongo
+from pymongo import MongoClient
 
 client = discord.Client()
 
+db_url = os.getenv('dbURL')
+
+cluster = MongoClient(db_url)
+
+
 @client.event
 async def on_ready():
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="bhendi.mp3"))
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="Bhendi.mp3"))
     print(f'We have logged in as {client.user}')
 
 @client.event
