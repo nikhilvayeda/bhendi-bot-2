@@ -8,12 +8,15 @@ client = discord.Client()
 
 db_url = os.getenv('dbURL')
 
+'''
 cluster = MongoClient(db_url)
+
 db = cluster['bhendibot']
 collection = db['bhendibot2']
+
 post = {"_id":0, "nice":0}
 collection.insert_one(post)
-
+'''
 
 @client.event
 async def on_ready():
