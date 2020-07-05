@@ -9,11 +9,15 @@ client = discord.Client()
 db_url = os.getenv('dbURL')
 
 cluster = MongoClient(db_url)
+db = cluster['bhendibot']
+collection = db['bhendibot2']
+post = {"_id":0, "nice":0}
+collection.insert_one(post)
 
 
 @client.event
 async def on_ready():
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="Bhendi.mp3"))
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="bhendi.mp3"))
     print(f'We have logged in as {client.user}')
 
 @client.event
