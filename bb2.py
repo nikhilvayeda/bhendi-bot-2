@@ -13,7 +13,7 @@ nice_list = ['nice', 'naice', 'nais', 'noice']
 
 def update_database(total_nice):
     requests.get(f"{dreamlo_url}/delete/nice_counter")
-    requests.get(f"{dreamlo_url}/add/nice_counter/{total_nice + 50}")
+    requests.get(f"{dreamlo_url}/add/nice_counter/{total_nice + 20}")
 
 def get_total_nice():
     data = json.loads((requests.get(f"{dreamlo_url}/json").text))
@@ -65,7 +65,7 @@ async def on_message(message):
     elif check_nice_present(str(message.content)):
         total_nice += 1
         temp_total_nice += 1
-        if temp_total_nice >= 50:
+        if temp_total_nice >= 20:
             update_database(total_nice)
             temp_total_nice = 0
         await message.channel.send(f"{choice(nice_list)}, total {choice(nice_list)} : {total_nice}")
