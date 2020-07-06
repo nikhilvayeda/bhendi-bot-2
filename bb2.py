@@ -129,17 +129,11 @@ async def on_message(message):
     elif str(message.content).lower() == 'uh oh':
         await message.channel.send('Stinky')
 
-    elif str(message.content).lower().find('bruh') != -1:
-        await message.channel.send('Ok obama')
-
-    elif str(message.content).lower() == 'sex':
-        await message.channel.send('When?')
-
     elif str(message.content).lower() == 'general kenobi':
         await message.channel.send('**Hello there - Bhendi Bot v2.0 by Monke - General Kenobi**')
 
     elif str(message.content).lower() == 'monke':
-        await message.channel.send('Monke seks :flushed:')
+        await message.channel.send('Wholesome :hugging:')
 
     elif str(message.content).lower() == "send nakade pic":
         await message.channel.send('No pervert')
