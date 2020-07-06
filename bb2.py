@@ -18,20 +18,24 @@ def update_database(total_nice):
 def get_total_nice():
     url_ = f"{dreamlo_url}/json"
     response = requests.get(url_)
-    print(f"response.text : {response.text}")
     data = json.loads(response.text)
-    print(data)
     total_nice = int(data['dreamlo']['leaderboard']['entry']['score'])
-    print(total_nice)
     return total_nice
 
 def check_nice_present(message):
     global nice_list
-    a_ = set(message.split(' ')).intersection(nice_list)
-    if len(a_) > 0:
-        return True
+    list_ = message.split(' ')
+    if len(list_) > 1:
+        a_ = set(list_).intersection(nice_list)
+        if len(a_) > 0:
+            return True
+        else:
+            return False
     else:
-        return False
+        if message in nice_list:
+            return True
+        else:
+            return False
 
 total_nice = get_total_nice()
 
@@ -67,7 +71,7 @@ async def on_message(message):
         except:
             await message.channel.send('failed to remove pass')
 
-    elif check_nice_present(str(message.content)):
+    elif check_nice_present(str(message.content).lower()):
         total_nice += 1
         temp_total_nice += 1
         if temp_total_nice >= 20:
