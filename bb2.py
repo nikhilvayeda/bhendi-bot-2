@@ -16,8 +16,13 @@ def update_database(total_nice):
     requests.get(f"{dreamlo_url}/add/nice_counter/{total_nice + 20}")
 
 def get_total_nice():
-    data = json.loads((requests.get(f"{dreamlo_url}/json").text))
+    url_ = f"{dreamlo_url}/json"
+    response = requests.get(url_)
+    print(f"response.text : {response.text}")
+    data = json.loads(response.text)
+    print(data)
     total_nice = int(data['dreamlo']['leaderboard']['entry']['score'])
+    print(total_nice)
     return total_nice
 
 def check_nice_present(message):
