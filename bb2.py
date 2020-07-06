@@ -1,22 +1,34 @@
 import discord
 import asyncio
 import os
-import pymongo
-from pymongo import MongoClient
+import requests
+import json
+from random import choice
 
 client = discord.Client()
+dreamlo_url = os.getenv('dreamlo_url')
+total_nice = 0
+temp_total_nice = 0
+nice_list = ['nice', 'naice', 'nais', 'noice']
 
-db_url = os.getenv('dbURL')
+def update_database(total_nice):
+    requests.get(f"{dreamlo_url}/delete/nice_counter")
+    requests.get(f"{dreamlo_url}/add/nice_counter/{total_nice + 50}")
 
-'''
-cluster = MongoClient(db_url)
+def get_total_nice():
+    data = json.loads(requests.get(f"{dreamlo_url}/json"))
+    total_nice = int(data['dreamlo']['leaderboard']['entry']['score'])
+    return total_nice
 
-db = cluster['bhendibot']
-collection = db['bhendibot2']
+def check_nice_present(message):
+    global nice_list
+    a_ = set(message.split(' ')).intersection(nice_list)
+    if len(a_) > 0:
+        return True
+    else:
+        return False
 
-post = {"_id":0, "nice":0}
-collection.insert_one(post)
-'''
+total_nice = get_total_nice()
 
 @client.event
 async def on_ready():
@@ -25,6 +37,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    global total_nice, temp_total_nice, nice_list
     if message.author.bot:
         return None
 
@@ -48,6 +61,14 @@ async def on_message(message):
             await message.channel.send("Removed pass.")
         except:
             await message.channel.send('failed to remove pass')
+
+    elif check_nice_present(str(message.content)):
+        total_nice += 1
+        temp_total_nice += 1
+        if temp_total_nice >= 50:
+            update_database(total_nice)
+            temp_total_nice = 0
+        await message.channel.send(f"{choice(nice_list)}, total {choice(nice_list)} : {total_nice}")
 
     elif str(message.content).lower().find('ooo') != -1:
         await message.channel.send('Bhendi, bhendi!')
