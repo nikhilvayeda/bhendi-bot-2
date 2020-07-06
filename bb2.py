@@ -77,7 +77,9 @@ async def on_message(message):
         if temp_total_nice >= 20:
             update_database(total_nice)
             temp_total_nice = 0
-        await message.channel.send(f"{choice(nice_list)}, total {choice(nice_list)} : {total_nice}")
+
+    elif str(message.content).lower() == "=totalnice":
+        await message.channel.send(f"Total {choice(nice_list)} : {total_nice}")
 
     elif str(message.content).lower().find('ooo') != -1:
         await message.channel.send('Bhendi, bhendi!')
