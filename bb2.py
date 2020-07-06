@@ -16,7 +16,7 @@ def update_database(total_nice):
     requests.get(f"{dreamlo_url}/add/nice_counter/{total_nice + 50}")
 
 def get_total_nice():
-    data = json.loads(requests.get(f"{dreamlo_url}/json"))
+    data = json.loads((requests.get(f"{dreamlo_url}/json").text))
     total_nice = int(data['dreamlo']['leaderboard']['entry']['score'])
     return total_nice
 
