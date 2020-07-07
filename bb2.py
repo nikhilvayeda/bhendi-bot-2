@@ -73,7 +73,7 @@ async def on_message(message):
 
     elif str(message.content).lower() == "=av":
         embed = discord.Embed(title=f"{message.author}")
-        embed.set_image(url=f"message.author.avatar_url")
+        embed.set_image(url=f"{message.author.avatar_url}")
         await message.channel.send(embed=embed)
 
     elif check_nice_present(str(message.content).lower()):
