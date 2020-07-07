@@ -3,13 +3,16 @@ import asyncio
 import os
 import requests
 import json
-from random import choice
+import random
 
 client = discord.Client()
 dreamlo_url = os.getenv('dreamlo_url')
 total_nice = 0
 temp_total_nice = 0
 nice_list = ['nice', 'naice', 'nais', 'noice']
+bhendi_prices = [420, 69, 40, 20]
+bhendi_asking_pharases = ['kitne ka', 'kitne ka diya', 'then how much', 'ek pav kitne', 'bhendi kitne'
+, 'bhendi kitne ki di', 'bhendi kitne ki hai', 'how much']
 
 def update_database(total_nice):
     requests.get(f"{dreamlo_url}/delete/nice_counter")
@@ -37,6 +40,14 @@ def check_nice_present(message):
         else:
             return False
 
+def check_if_asking_price_xD(message):
+    for i in bhendi_asking_pharases:
+        if message == i:
+            return True
+            break
+    return False
+
+
 total_nice = get_total_nice()
 
 @client.event
@@ -52,6 +63,7 @@ async def on_message(message):
 
     if str(message.content).lower() == "hi":
         await message.channel.send('Hello!')
+
 
     elif str(message.content).lower() == "=pass":
         role = discord.utils.get(message.guild.roles, name="nsfw pass")
@@ -84,7 +96,7 @@ async def on_message(message):
             temp_total_nice = 0
 
     elif str(message.content).lower() == "=totalnice":
-        await message.channel.send(f"Total {choice(nice_list)} : {total_nice}")
+        await message.channel.send(f"Total {random.choice(nice_list)} : {total_nice}")
 
     elif str(message.content).lower().find('ooo') != -1:
         await message.channel.send('Bhendi, bhendi!')
@@ -150,5 +162,8 @@ async def on_message(message):
         embed = discord.Embed(title="P*rn? here you go")
         embed.add_field(name='Check this out', value=f"""[latest collection](https://www.youtube.com/watch?v=vTIIMJ9tUc8)""")
         await message.channel.send(embed=embed)
+
+    elif check_if_asking_price_xD(str(message.content).lower()):
+        await message.channel.send(f"{random.choice(bhendi_prices)} {random.choice([' ', 'ka sir', 'ka bhaiya'])}")
 
 client.run(os.getenv('token'))
