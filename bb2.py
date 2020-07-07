@@ -71,6 +71,11 @@ async def on_message(message):
         except:
             await message.channel.send('failed to remove pass')
 
+    elif str(message.content).lower() == "=av":
+        embed = discord.Embed(title=f"{message.author}")
+        embed.set_image(url=f"message.author.avatar_url")
+        await message.channel.send(embed=embed)
+
     elif check_nice_present(str(message.content).lower()):
         total_nice += 1
         temp_total_nice += 1
