@@ -1,4 +1,4 @@
-import discor
+import discord
 import asyncio
 import os
 import requests
