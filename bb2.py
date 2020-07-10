@@ -58,7 +58,11 @@ async def on_ready():
 @client.event
 async def on_message(message):
     global total_nice, temp_total_nice, nice_list
+
     if message.author.bot:
+        return None
+    if message.guild == None:
+        await message.channel.send("Server mein anna")
         return None
 
     if str(message.content).lower() == "hi":
