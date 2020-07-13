@@ -70,7 +70,7 @@ async def on_message(message):
 
 
     elif str(message.content).lower() == "=pass":
-        role = discord.utils.get(message.guild.roles, name="nsfw pass")
+        role = discord.utils.get(message.guild.roles, name="edgy pass")
         user = message.author
         try:
             await user.add_roles(role)
@@ -79,7 +79,7 @@ async def on_message(message):
             await message.channel.send("failed to give pass")
 
     elif str(message.content).lower() == "=nopass":
-        role = discord.utils.get(message.guild.roles, name="nsfw pass")
+        role = discord.utils.get(message.guild.roles, name="edgy pass")
         user = message.author
         try:
             await user.remove_roles(role)
