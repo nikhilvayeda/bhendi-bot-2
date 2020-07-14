@@ -75,8 +75,9 @@ async def on_message(message):
         try:
             await user.add_roles(role)
             await message.channel.send("Given, enjoy.")
-        except :
+        except Exception as e:
             await message.channel.send("failed to give pass")
+            print(f"Error : {e}")
 
     elif str(message.content).lower() == "=nopass":
         role = discord.utils.get(message.guild.roles, name="edgy pass")
@@ -84,8 +85,9 @@ async def on_message(message):
         try:
             await user.remove_roles(role)
             await message.channel.send("Removed pass.")
-        except:
+        except Exception as e:
             await message.channel.send('failed to remove pass')
+            print(f"Error : {e}")
 
     elif str(message.content).lower() == "=av":
         embed = discord.Embed(title=f"{message.author}")
