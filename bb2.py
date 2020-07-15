@@ -14,6 +14,9 @@ bhendi_prices = [420, 69, 40, 20]
 bhendi_asking_pharases = ['kitne ka', 'kitne ka diya', 'then how much', 'ek pav kitne', 'bhendi kitne'
 , 'bhendi kitne ki di', 'bhendi kitne ki hai', 'how much']
 
+WELCOME_CHANNEL_ID = 722339858408013834
+LEAVE_CHANNEL_ID = 733020324890673302
+
 def update_database(total_nice):
     requests.get(f"{dreamlo_url}/delete/nice_counter")
     requests.get(f"{dreamlo_url}/add/nice_counter/{total_nice + 20}")
