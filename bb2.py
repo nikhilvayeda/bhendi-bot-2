@@ -16,6 +16,7 @@ bhendi_asking_pharases = ['kitne ka', 'kitne ka diya', 'then how much', 'ek pav 
 
 WELCOME_CHANNEL_ID = 722339858408013834
 LEAVE_CHANNEL_ID = 733020324890673302
+SERVER_NAME = "Say Station"
 
 def update_database(total_nice):
     requests.get(f"{dreamlo_url}/delete/nice_counter")
