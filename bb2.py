@@ -56,6 +56,24 @@ async def on_ready():
     print(f'We have logged in as {client.user}')
 
 @client.event
+async def on_member_join(member):
+    if str(member.guild) == SERVER_NAME:
+        wel_come_channel = client.get_channel(WELCOME_CHANNEL_ID)
+        if wel_come_channel is not None:
+            embed = discord.Embed("New Member!")
+            embed.add_field(name="Fellow SaySena members!", value=f"Hey {member.mention}!, welcome to SayStation" )
+            embed.set_image(url=f"{member.avatar_url}")
+            wel_come_channel.send(embed=embed)
+
+@client.event
+async def on_member_remove(member):
+    if str(member.guild) == SERVER_NAME:
+        leave_channel = client.get_channel(LEAVE_CHANNEL_ID)
+        if leave_channel is not None:
+            leave_channel.send(f"Say Sena! {member} left the server.\n\n\n react :regional_indicator_f: to pay respect.")
+
+
+@client.event
 async def on_message(message):
     global total_nice, temp_total_nice, nice_list
 
