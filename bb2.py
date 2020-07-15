@@ -172,4 +172,8 @@ async def on_message(message):
     elif check_if_asking_price_xD(str(message.content).lower()):
         await message.channel.send(f"{random.choice(bhendi_prices)} {random.choice([' ', 'ka sir', 'ka bhaiya'])}")
 
+@client.command()
+async def ping(ctx):
+    await ctx.send(f'Pong! {round(client.latency * 1000)} ms')
+
 client.run(os.getenv('token'))
