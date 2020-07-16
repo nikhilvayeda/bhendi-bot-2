@@ -15,7 +15,7 @@ bhendi_asking_pharases = ['kitne ka', 'kitne ka diya', 'then how much', 'ek pav 
 , 'bhendi kitne ki di', 'bhendi kitne ki hai', 'how much']
 
 WELCOME_CHANNEL_ID = 722339858408013834
-LEAVE_CHANNEL_ID = 733020324890673302
+
 SERVER_NAME = "Say Station"
 
 def update_database(total_nice):
@@ -72,7 +72,7 @@ async def on_member_join(member):
 @client.event
 async def on_member_remove(member):
     if str(member.guild) == SERVER_NAME:
-        leave_channel = client.get_channel(LEAVE_CHANNEL_ID)
+        leave_channel = client.get_channel(WELCOME_CHANNEL_ID)
         if leave_channel is not None:
             leave_channel.send(f"Say Sena! {member} left the server.\n\n\n react :regional_indicator_f: to pay respect.")
 
