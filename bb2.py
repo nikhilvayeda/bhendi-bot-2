@@ -186,6 +186,9 @@ async def on_message(message):
     elif str(message.content).lower() == "send nakade pic":
         await message.channel.send('No pervert')
 
+    elif str(message.content).lower() == "ANYTHING EXCEPT THE CONTENT RELATED TO THE CHANNEL, WE WILL DELETE AND THE MEMBER MAY BE BANNED OR MUTED":
+        await message.channel.send(name=f"!warn {member.mention}")
+
     elif str(message.content).lower() == 'send dunes':
         await message.channel.send('here you go https://tenor.com/view/noodles-pasta-gif-4803871')
 
