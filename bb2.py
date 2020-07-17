@@ -71,9 +71,13 @@ async def on_member_join(member):
 
 @client.event
 async def on_member_remove(member):
+    print(dir(member))
+    print(member.guild)
     if str(member.guild) == SERVER_NAME:
         leave_channel = client.get_channel(WELCOME_CHANNEL_ID)
+        print(leave_channel)
         if leave_channel is not None:
+            print('done')
             leave_channel.send(f"Say Sena! {member} left the server.\n\n\n react :regional_indicator_f: to pay respect.")
 
 
