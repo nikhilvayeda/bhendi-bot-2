@@ -65,16 +65,19 @@ async def on_member_join(member):
         wel_come_channel = client.get_channel(WELCOME_CHANNEL_ID)
         if wel_come_channel is not None:
             embed = discord.Embed(title="New Member!")
-            embed.add_field(name="Fellow SaySena members!", value=f"Hey {member.mention}!, welcome to SayStation" )
-            embed.set_image(url=f"{member.avatar_url}")
-            wel_come_channel.send(embed=embed)
+            embed.add_field(name=f"Hello {member.mention}", value=f"""Welcome to Say Station.
+Be sure to read the rules in <#722340658249203722>. Go have a chat with the members in <#722336877524418623>""" )
+            embed.set_image(url="https://cdn.discordapp.com/attachments/722370864229646377/733302632977924146/image0.gif")
+            await wel_come_channel.send(embed=embed)
 
 @client.event
 async def on_member_remove(member):
     if str(member.guild) == SERVER_NAME:
         leave_channel = client.get_channel(WELCOME_CHANNEL_ID)
         if leave_channel is not None:
-            leave_channel.send(f"Say Sena! {member} left the server.\n\n\n react :regional_indicator_f: to pay respect.")
+            embed = discord.Embed(title=f"{member} has left the server. Can we get some F please")
+            embed.set_image(url="https://cdn.discordapp.com/attachments/729979069248176162/731784988009168906/image0.gif")
+            await leave_channel.send(embed=embed)
 
 
 @client.event
