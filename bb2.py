@@ -4,12 +4,13 @@ import requests
 import json
 import random
 from discord.ext import tasks
+from discord.ext import commands
 import praw
 from VARIABLES_ import *
 from FUNCTIONS_ import *
 from RANDOM_REPLIES import RandomReply
 
-client = discord.Client()
+client = commands.Bot(command_prefix="=")
 
 total_counteded = {"bruh" : get_total_word_counted(0), "nice" : get_total_word_counted(1)}
 
