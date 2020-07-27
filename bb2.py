@@ -61,7 +61,7 @@ async def on_message(message):
         await message.channel.send("Server mein anna")
         return None
 
-    reply = RandomReply(str(message.content).lower())
+    reply = RandomReply(str(message.content))
 
     if reply != None:
         await message.channel.send(reply)

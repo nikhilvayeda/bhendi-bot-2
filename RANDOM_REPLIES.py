@@ -1,6 +1,8 @@
 
 
-def RandomReply(message):
+def RandomReply(message_raw):
+
+    message = message_raw.lower()
 
     if message == "hi":
         return "Hello!"
@@ -44,7 +46,7 @@ def RandomReply(message):
 
     elif message[:7] == "=repeat":
         if len(message[7:]) > 0:
-            return message[7:]
+            return message_raw[7:]
 
     else: return None
 
