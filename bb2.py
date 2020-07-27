@@ -1,10 +1,8 @@
 import discord
-import asyncio
 import requests
 import json
 import random
-from discord.ext import tasks
-from discord.ext import commands
+from discord.ext import tasks, commands
 import praw
 from VARIABLES_ import *
 from FUNCTIONS_ import *
@@ -17,6 +15,7 @@ total_counteded = {"bruh" : get_total_word_counted(0), "nice" : get_total_word_c
 
 @client.event
 async def on_ready():
+
     update_memes()
     send_meme.start()
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="bhendi.mp3"))
@@ -25,6 +24,7 @@ async def on_ready():
 
 @client.event
 async def on_member_join(member):
+
     if str(member.guild) == SERVER_NAME:
         wel_come_channel = client.get_channel(WELCOME_CHANNEL_ID)
         if wel_come_channel is not None:
@@ -34,7 +34,7 @@ async def on_member_join(member):
                     _total_member += 1
 
             embed = discord.Embed(title="New Member!")
-            embed.add_field(name=f"Hello", value=f"""Hello {member.mention}!, Welcome to Say Station. \n
+            embed.add_field(name=f"Hello", value=f"""Hello {member.mention}!({member}), Welcome to Say Station. \n
                             Be sure to read the rules in <#722340658249203722>. Go have a chat with the members in <#722336877524418623>""" )
             embed.add_field(name="Member Count", value=f"#{_total_member + 1} member")
             embed.set_image(url="https://cdn.discordapp.com/attachments/722370864229646377/733302632977924146/image0.gif")

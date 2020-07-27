@@ -21,7 +21,6 @@ def get_total_word_counted(word_index):
 
     _gotValue = False
     while not _gotValue:
-        print('ad')
         _res = requests.get(f"{dreamlo_url}/json")
         if _res.status_code == 200:
             try:
