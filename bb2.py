@@ -117,7 +117,7 @@ async def on_message(message):
 
             if len(message.role_mentions) > 0 or "@everyone" in str(message.content) or "@here" in str(message.content):
                 embed = discord.Embed(title=f" ")
-                embed.add_field(name="_________", value=f"{message.content[7:]}")
+                embed.add_field(name=">_<", value=f"{message.content[7:]}")
                 await message.channel.send(embed=embed)
 
             else:
