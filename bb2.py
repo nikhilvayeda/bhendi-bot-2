@@ -147,7 +147,7 @@ async def on_raw_message_delete(payload):
         _msg = {"author" : payload.cached_message.author, "message" : payload.cached_message.content}
         DELETED_MESSAGES.append(_msg)
         if len(DELETED_MESSAGES) > 5:
-            del DELETED_MESSAGES[-1]
+            del DELETED_MESSAGES[0]
 
 
 # MEMES
