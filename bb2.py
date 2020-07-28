@@ -127,7 +127,7 @@ async def on_message(message):
         embed = discord.Embed(title="Last Deleted Messages")
 
         for msg in DELETED_MESSAGES:
-            embed.add_field(name=f"By {msg['author']}", value=f'Message : **"{msg['message']}"**')
+            embed.add_field(name=f"By {msg['author']}", value=f'Message : **{msg["message"]}**')
 
         await message.channel.send(embed=embed)
 
