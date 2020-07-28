@@ -167,7 +167,7 @@ async def on_raw_message_delete(payload):
 
 @client.event
 async def on_raw_message_edit(payload):
-    if payload.data.guild_id == SERVER_ID:
+    if payload.data["guild_id"] == SERVER_ID:
         if str(payload.cached_message.content).lower()[:7] == "=repeat":
             if len(str(payload.cached_message.content)[7:]) > 0:
                 embed = discord.Embed(title=f"__**=repeat Command Message Edited**__")
