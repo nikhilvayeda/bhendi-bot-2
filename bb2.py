@@ -12,6 +12,7 @@ client = commands.Bot(command_prefix="=")
 
 total_counteded = {"bruh" : get_total_word_counted(0), "nice" : get_total_word_counted(1)}
 DELETED_MESSAGES = []
+EDITED_MESSAGES = []
 
 @client.event
 async def on_ready():
@@ -124,13 +125,27 @@ async def on_message(message):
                 await message.channel.send(message.content[7:])
 
     elif str(message.content).lower() == "=deleted":
-        embed = discord.Embed(title="Last Deleted Messages")
+        embed = discord.Embed(title="__**Last Deleted Messages**__")
 
-        for msg in DELETED_MESSAGES:
-            embed.add_field(name=f"By {msg['author']}", value=f'Message : **{msg["message"]}**')
+        if len(DELETED_MESSAGES) > 0:
+            for msg in DELETED_MESSAGES:
+                embed.add_field(name=f"By {msg['author']}", value=f'Message : **{msg["message"]}**')
+        else:
+            embed.add_field(name="No message was deleted after I woke up", value="¯\\_(ツ)_/¯")
 
         await message.channel.send(embed=embed)
 
+
+    elif str(message.content).lower() == "=edited":
+        embed = discord.Embed(title="__**Last Edited Messages**__")
+
+        if len(EDITED_MESSAGES) > 0:
+            for msg in EDITED_MESSAGES:
+                embed.add_field(name=f"By {msg['author']}", value=f'Message : **{msg["message"]}**')
+        else:
+            embed.add_field(name="No message was edited after I woke up", value="¯\\_(ツ)_/¯")
+
+        await message.channel.send(embed=embed)
 
 
 
@@ -138,7 +153,7 @@ async def on_message(message):
 async def on_raw_message_delete(payload):
     if str(payload.cached_message.content).lower()[:7] == "=repeat":
         if len(str(payload.cached_message.content)[7:]) > 0:
-            embed = discord.Embed(title=f"__**=repeat command message deleted**__")
+            embed = discord.Embed(title=f"__**=repeat Command Message Deleted**__")
             embed.add_field(name="**Original Message >_< :**", value=f"{payload.cached_message.content}")
             embed.add_field(name="**Author**", value=f"{payload.cached_message.author.mention}")
             await payload.cached_message.channel.send(embed=embed)
@@ -148,6 +163,22 @@ async def on_raw_message_delete(payload):
         DELETED_MESSAGES.append(_msg)
         if len(DELETED_MESSAGES) > 5:
             del DELETED_MESSAGES[0]
+
+@client.event
+async def on_raw_message_edit(payload):
+    if str(payload.cached_message.content).lower()[:7] == "=repeat":
+        if len(str(payload.cached_message.content)[7:]) > 0:
+            embed = discord.Embed(title=f"__**=repeat Command Message Edited**__")
+            embed.add_field(name="**Original Message >_< :**", value=f"{payload.cached_message.content}")
+            embed.add_field(name="**Author**", value=f"{payload.cached_message.author.mention}")
+            await payload.cached_message.channel.send(embed=embed)
+
+    else:
+        _msg = {"author" : payload.cached_message.author, "message" : payload.cached_message.content}
+        EDITED_MESSAGES.append(_msg)
+        if len(EDITED_MESSAGES) > 5:
+            del EDITED_MESSAGES[0]
+
 
 
 # MEMES
