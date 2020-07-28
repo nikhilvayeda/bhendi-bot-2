@@ -116,7 +116,7 @@ async def on_message(message):
     elif str(message.content).lower()[:7] == "=repeat":
         if len(str(message.content)[7:]) > 0:
 
-            if len(message.role_mentions) > 0 or "@everyone" in str(message.content) or "@here" in str(message.content):
+            if len(message.role_mentions) > 0 or message.mention_everyone:
                 embed = discord.Embed(title=f" ")
                 embed.add_field(name=">_<", value=f"{message.content[7:]}")
                 await message.channel.send(embed=embed)
