@@ -24,3 +24,5 @@ REDDIT_MEMES_ID = 722366506020765727
 SERVER_ID = 722336877524418620
 
 SERVER_NAME = "Say Station"
+
+REPO_LINK = "https://github.com/nikhilvayeda/bhendi-bot-2"

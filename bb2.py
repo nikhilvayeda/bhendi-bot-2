@@ -148,6 +148,10 @@ async def on_message(message):
 
         await message.channel.send(embed=embed)
 
+    elif str(message.content).lower() == "=source":
+        _msg = f"Here's the repository link, fork the repo, make changes, then create a pull request.\n {REPO_LINK}"
+        message.channel.send(_msg)
+
 
 
 @client.event
