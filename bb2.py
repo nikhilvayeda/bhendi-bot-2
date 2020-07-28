@@ -141,7 +141,8 @@ async def on_message(message):
 
         if len(EDITED_MESSAGES) > 0:
             for msg in EDITED_MESSAGES:
-                embed.add_field(name=f"By {msg['author']}", value=f'Message : **{msg["message"]}**')
+                embed.add_field(name=f"by {msg['author']}",
+                                value=f"Original Message : {msg['message_before']}\nEdited Message : {msg['message_after']}")
         else:
             embed.add_field(name="No message was edited after I woke up", value="¯\\_(ツ)_/¯")
 
@@ -166,20 +167,27 @@ async def on_raw_message_delete(payload):
                 del DELETED_MESSAGES[0]
 
 @client.event
-async def on_raw_message_edit(payload):
-    if payload.data["guild_id"] == SERVER_ID and not payload.cached_message.author.bot:
-        if str(payload.cached_message.content).lower()[:7] == "=repeat":
-            if len(str(payload.cached_message.content)[7:]) > 0:
+async def on_message_edit(before, after):
+    if before.guild.id == SERVER_ID and not before.author.bot:
+
+        if str(before.content).lower()[:7] == "=repeat":
+            if len(str(before.content)[7:]) > 0:
+
                 embed = discord.Embed(title=f"__**=repeat Command Message Edited**__")
-                embed.add_field(name="**Original Message >_< :**", value=f"{payload.cached_message.content}")
-                embed.add_field(name="**Author**", value=f"{payload.cached_message.author.mention}")
-                await payload.cached_message.channel.send(embed=embed)
+                embed.add_field(name="**Original Message >_< :**", value=f"{before.content}")
+                embed.add_field(name="**Edited Message >_< :**", value=f"{after.content}")
+
+                embed.add_field(name="**Author**", value=f"{before.author.mention}")
+                await before.channel.send(embed=embed)
 
         else:
-            _msg = {"author" : payload.cached_message.author, "message" : payload.cached_message.content}
+            _msg = {"author" : before.author, "message_before" : before.content,
+            "message_after" : after.content }
+
             EDITED_MESSAGES.append(_msg)
-            if len(EDITED_MESSAGES) > 5:
-                del EDITED_MESSAGES[0]
+
+        if len(EDITED_MESSAGES) > 5:
+            del EDITED_MESSAGES[0]
 
 
 
