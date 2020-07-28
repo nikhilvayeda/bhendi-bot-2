@@ -11,7 +11,7 @@ from RANDOM_REPLIES import RandomReply
 client = commands.Bot(command_prefix="=")
 
 total_counteded = {"bruh" : get_total_word_counted(0), "nice" : get_total_word_counted(1)}
-
+DELETED_MESSAGES = []
 
 @client.event
 async def on_ready():
@@ -122,6 +122,32 @@ async def on_message(message):
 
             else:
                 await message.channel.send(message.content[7:])
+
+    elif str(message.content).lower() == "=deleted":
+        embed = discord.Embed(title="Last Deleted Messages")
+
+        for msg in DELETED_MESSAGES:
+            embed.add_field(name=f"By {msg['author']}", value=f'Message : **"{msg['message']}"**')
+
+        await message.channel.send(embed=embed)
+
+
+
+
+@client.event
+async def on_raw_message_delete(payload):
+    if str(payload.cached_message.content).lower()[:7] == "=repeat":
+        if len(str(payload.cached_message.content)[7:]) > 0:
+            embed = discord.Embed(title=f"__**=repeat command message deleted**__")
+            embed.add_field(name="**Original Message >_< :**", value=f"{payload.cached_message.content}")
+            embed.add_field(name="**Author**", value=f"{payload.cached_message.author.mention}")
+            await payload.cached_message.channel.send(embed=embed)
+
+    else:
+        _msg = {"author" : payload.cached_message.author, "message" : payload.cached_message.content}
+        DELETED_MESSAGES.append(_msg)
+        if len(DELETED_MESSAGES) > 5:
+            del DELETED_MESSAGES[-1]
 
 
 # MEMES
