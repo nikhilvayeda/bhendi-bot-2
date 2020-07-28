@@ -151,33 +151,35 @@ async def on_message(message):
 
 @client.event
 async def on_raw_message_delete(payload):
-    if str(payload.cached_message.content).lower()[:7] == "=repeat":
-        if len(str(payload.cached_message.content)[7:]) > 0:
-            embed = discord.Embed(title=f"__**=repeat Command Message Deleted**__")
-            embed.add_field(name="**Original Message >_< :**", value=f"{payload.cached_message.content}")
-            embed.add_field(name="**Author**", value=f"{payload.cached_message.author.mention}")
-            await payload.cached_message.channel.send(embed=embed)
+    if payload.guild_id == SERVER_ID:
+        if str(payload.cached_message.content).lower()[:7] == "=repeat":
+            if len(str(payload.cached_message.content)[7:]) > 0:
+                embed = discord.Embed(title=f"__**=repeat Command Message Deleted**__")
+                embed.add_field(name="**Original Message >_< :**", value=f"{payload.cached_message.content}")
+                embed.add_field(name="**Author**", value=f"{payload.cached_message.author.mention}")
+                await payload.cached_message.channel.send(embed=embed)
 
-    else:
-        _msg = {"author" : payload.cached_message.author, "message" : payload.cached_message.content}
-        DELETED_MESSAGES.append(_msg)
-        if len(DELETED_MESSAGES) > 5:
-            del DELETED_MESSAGES[0]
+        else:
+            _msg = {"author" : payload.cached_message.author, "message" : payload.cached_message.content}
+            DELETED_MESSAGES.append(_msg)
+            if len(DELETED_MESSAGES) > 5:
+                del DELETED_MESSAGES[0]
 
 @client.event
 async def on_raw_message_edit(payload):
-    if str(payload.cached_message.content).lower()[:7] == "=repeat":
-        if len(str(payload.cached_message.content)[7:]) > 0:
-            embed = discord.Embed(title=f"__**=repeat Command Message Edited**__")
-            embed.add_field(name="**Original Message >_< :**", value=f"{payload.cached_message.content}")
-            embed.add_field(name="**Author**", value=f"{payload.cached_message.author.mention}")
-            await payload.cached_message.channel.send(embed=embed)
+    if payload.guild_id == SERVER_ID:
+        if str(payload.cached_message.content).lower()[:7] == "=repeat":
+            if len(str(payload.cached_message.content)[7:]) > 0:
+                embed = discord.Embed(title=f"__**=repeat Command Message Edited**__")
+                embed.add_field(name="**Original Message >_< :**", value=f"{payload.cached_message.content}")
+                embed.add_field(name="**Author**", value=f"{payload.cached_message.author.mention}")
+                await payload.cached_message.channel.send(embed=embed)
 
-    else:
-        _msg = {"author" : payload.cached_message.author, "message" : payload.cached_message.content}
-        EDITED_MESSAGES.append(_msg)
-        if len(EDITED_MESSAGES) > 5:
-            del EDITED_MESSAGES[0]
+        else:
+            _msg = {"author" : payload.cached_message.author, "message" : payload.cached_message.content}
+            EDITED_MESSAGES.append(_msg)
+            if len(EDITED_MESSAGES) > 5:
+                del EDITED_MESSAGES[0]
 
 
 
