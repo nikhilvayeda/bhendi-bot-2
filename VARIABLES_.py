@@ -16,6 +16,8 @@ bhendi_prices = [420, 69, 40, 20]
 bhendi_asking_pharases = ['kitne ka', 'kitne ka diya', 'then how much', 'ek pav kitne', 'bhendi kitne'
 , 'bhendi kitne ki di', 'bhendi kitne ki hai', 'how much']
 
+not_to_mention_roles = ["@everyone", "@Say Sena", "@Mods"]
+
 WELCOME_CHANNEL_ID = 722339858408013834
 REDDIT_MEMES_ID = 722366506020765727
 

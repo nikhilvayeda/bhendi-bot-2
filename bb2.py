@@ -112,6 +112,18 @@ async def on_message(message):
         if str(message.content)[6:] in counted_words:
             await message.channel.send(f"total {str(message.content[6:])} : {total_counteded[str(message.content)[6:]]}")
 
+    elif str(message.content).lower()[:7] == "=repeat":
+        if len(str(message.content)[7:]) > 0:
+
+            if len(message.role_mentions) > 0 or "@everyone" in str(message.content):
+                embed = discord.Embed(title=f" ")
+                embed.add_field(name="_________", value=f"{message.content[7:]}")
+                await message.channel.send(embed=embed)
+
+            else:
+                await message.channel.send(message.content[7:])
+
+
 # MEMES
 res = praw.Reddit(client_id=REDDIT_KEY, client_secret=REDDIT_SECRET,
                    user_agent="bhendi")
@@ -130,7 +142,8 @@ async def send_meme():
     embed.add_field(name='Author', value=f"[{_current_meme['author']}]({_current_meme['author_profile']})")
     embed.add_field(name="Post", value=f"[{_current_meme['post_title']}]({_current_meme['post_link']})")
     embed.set_image(url=_current_meme['image_url'])
-    await channel_.send(embed=embed)
+    if channel_ != None:
+        await channel_.send(embed=embed)
 
 @send_meme.before_loop
 async def before_send_meme():

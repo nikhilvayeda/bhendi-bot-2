@@ -44,10 +44,6 @@ def RandomReply(message_raw):
     elif message == "monke":
         return "Wholesome :hugging:"
 
-    elif message[:7] == "=repeat":
-        if len(message[7:]) > 0:
-            return message_raw[7:]
-
     else: return None
 
 
