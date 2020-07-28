@@ -2,7 +2,7 @@ from VARIABLES_ import *
 import requests
 import json
 
-def update_database(word_index):
+def update_database(word_index, value):
     global counters, total_counteded
     counter = counters[word_index]
 
@@ -12,7 +12,7 @@ def update_database(word_index):
 
     _status_code_b = 0
     while _status_code_b != 200:
-        _status_code_b = requests.get(f"{dreamlo_url}/add/{counter}/{total_counteded[counted_words[word_index]]}").status_code
+        _status_code_b = requests.get(f"{dreamlo_url}/add/{counter}/{value}").status_code
 
 
 def get_total_word_counted(word_index):
