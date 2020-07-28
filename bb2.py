@@ -129,7 +129,7 @@ async def on_message(message):
 
         if len(DELETED_MESSAGES) > 0:
             for msg in DELETED_MESSAGES:
-                embed.add_field(name=f"By {msg['author']}", value=f'Message : **{msg["message"]}**')
+                embed.add_field(name=f"By {msg['author']}", value=f'Message : **{msg["message"]}**\n\n')
         else:
             embed.add_field(name="No message was deleted after I woke up", value="¯\\_(ツ)_/¯")
 
@@ -142,7 +142,7 @@ async def on_message(message):
         if len(EDITED_MESSAGES) > 0:
             for msg in EDITED_MESSAGES:
                 embed.add_field(name=f"by {msg['author']}",
-                                value=f"Original Message : {msg['message_before']}\nEdited Message : {msg['message_after']}")
+                                value=f"Original Message : {msg['message_before']}\nEdited Message : {msg['message_after']}\n\n")
         else:
             embed.add_field(name="No message was edited after I woke up", value="¯\\_(ツ)_/¯")
 
