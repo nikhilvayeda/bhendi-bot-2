@@ -223,7 +223,7 @@ async def before_send_meme():
 def update_memes():
     global ALL_MEMES, MEME_COUNT
     for i in res.subreddit('SaimanSays').hot(limit=200):
-        if str(i.url).endswith(('.jpg', '.png', '.jpeg', '.gif', '.webp'))
+        if str(i.url).endswith(('.jpg', '.png', '.jpeg', '.gif', '.webp')):
             _meme = {'author' : i.author, 'author_profile' : f"https://www.reddit.com/u/{i.author}"
             , "image_url" : i.url,"post_title" : i.title,
             "post_link" : f"https://reddit.com{i.permalink}"}
