@@ -105,7 +105,7 @@ async def on_message(message):
 
 
         if temp_total_counteded[word_counted] == 20:
-            update_database(index_of_word_counted)
+            update_database(index_of_word_counted, total_counteded[counted_words[index_of_word_counted]])
             temp_total_counteded[word_counted] = 0
 
     elif str(message.content)[:6] == "=total":
