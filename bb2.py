@@ -36,7 +36,7 @@ async def on_member_join(member):
 
             embed = discord.Embed(title="New Member!")
             embed.add_field(name=f"Hello", value=f"""Hello {member.mention}!({member}), Welcome to Say Station. \n
-Be sure to read the rules in <#722340658249203722>. Go have a chat with the members in <#722336877524418623>""" )
+Be sure to read the rules in <#{RULES_CHANNEL_ID}>. Go have a chat with the members in <#{GENERAL_CHANNEL_ID}>""" )
             embed.add_field(name="Member Count", value=f"#{_total_member + 1} member")
             embed.set_image(url="https://cdn.discordapp.com/attachments/722370864229646377/733302632977924146/image0.gif")
             await wel_come_channel.send(embed=embed)
