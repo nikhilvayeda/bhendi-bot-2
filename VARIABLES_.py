@@ -18,8 +18,8 @@ bhendi_asking_pharases = ['kitne ka', 'kitne ka diya', 'then how much', 'ek pav 
 
 not_to_mention_roles = ["@everyone", "@Say Sena", "@Mods"]
 
-WELCOME_CHANNEL_ID = 722339858408013834
-REDDIT_MEMES_ID = 722366506020765727
+WELCOME_CHANNEL_ID = 738264222387142697
+REDDIT_MEMES_ID = 738272583165935706
 
 SERVER_ID = 722336877524418620
 
