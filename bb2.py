@@ -68,7 +68,7 @@ async def on_message(message):
         await message.channel.send(reply)
 
     elif str(message.content).lower() == "bruh":
-        message.add_reaction('<:bhau:730130181947261080>')
+        await message.add_reaction('<:bhau:730130181947261080>')
 
     elif str(message.content).lower() == "=pass":
         role = discord.utils.get(message.guild.roles, name="edgy pass")
@@ -127,7 +127,8 @@ async def on_message(message):
 
         if len(DELETED_MESSAGES) > 0:
             for msg in DELETED_MESSAGES:
-                embed.add_field(name=f"By {msg['author']}", value=f'Message : **{msg["message"]}**\n¯\n_')
+                embed.add_field(name=f"By {msg['author']}", value=f'Message : **{msg["message"]}**\n¯\n_',
+                                inline=True)
         else:
             embed.add_field(name="No message was deleted after I woke up", value="¯\\_(ツ)_/¯")
 
@@ -140,7 +141,8 @@ async def on_message(message):
         if len(EDITED_MESSAGES) > 0:
             for msg in EDITED_MESSAGES:
                 embed.add_field(name=f"by {msg['author']}",
-                                value=f"Original Message : {msg['message_before']}\nEdited Message : {msg['message_after']}\n¯\n_")
+                                value=f"Original Message : {msg['message_before']}\nEdited Message : {msg['message_after']}\n¯\n_",
+                                inline=True)
         else:
             embed.add_field(name="No message was edited after I woke up", value="¯\\_(ツ)_/¯")
 
