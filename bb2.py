@@ -213,7 +213,7 @@ async def send_meme():
     _current_meme = ALL_MEMES[MEME_COUNT]
     MEME_COUNT += 1
     embed = discord.Embed(title="Reddit Review")
-    embed.add_field(name='Author', value=f"[{_current_meme['author']}]({_current_meme['author_profile']})")
+    embed.add_field(name='Author', value=f"[u/{_current_meme['author']}]({_current_meme['author_profile']})")
     embed.add_field(name="Post", value=f"[{_current_meme['post_title']}]({_current_meme['post_link']})")
     embed.set_image(url=_current_meme['image_url'])
     if channel_ != None:
