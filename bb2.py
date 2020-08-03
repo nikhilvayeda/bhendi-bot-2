@@ -152,6 +152,8 @@ async def on_message(message):
         _msg = f"Here's the repository link, fork the repo, make changes, then create a pull request.\n {REPO_LINK}"
         await message.channel.send(_msg)
 
+    await client.process_commands(message)
+
 
 
 @client.event
