@@ -195,13 +195,14 @@ async def on_message_edit(before, after):
 
 @client.command()
 async def av(ctx, user : discord.Member = None):
+    print(user, type(user))
     if user:
         embed = discord.Embed(title=f"{ctx.author}")
         embed.set_image(url=f"{ctx.author.avatar_url}")
     else:
         if isinstance(user, discord.Member):
             embed = discord.Embed(title=f"{user}")
-            embed.set_image(url=f"{ctx.author.avatar_url}")
+            embed.set_image(url=f"{user.avatar_url}")
         else:
             embed = discord.Embed(title=f"Error", description="Please provide a valid user")
 
