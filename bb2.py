@@ -197,6 +197,19 @@ async def on_message_edit(before, after):
             del EDITED_MESSAGES[0]
 
 
+@client.command()
+async def av(ctx, user : discord.Member = None):
+    if user == None:
+        embed = discord.Embed(title=f"{ctx.author}")
+        embed.set_image(url=f"{ctx.author.avatar_url}")
+    else:
+        if isinstance(user, discord.Member):
+            embed = discord.Embed(title=f"{user.author}")
+            embed.set_image(url=f"{ctx.author.avatar_url}")
+        else:
+            embed = discord.Embed(title=f"Error", description="Please provide a valid user")
+
+    await ctx.send(embed=embed)
 
 # MEMES
 res = praw.Reddit(client_id=REDDIT_KEY, client_secret=REDDIT_SECRET,
