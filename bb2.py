@@ -195,7 +195,7 @@ async def on_message_edit(before, after):
 
 @client.command()
 async def av(ctx, user : discord.Member = None):
-    if user == None:
+    if user:
         embed = discord.Embed(title=f"{ctx.author}")
         embed.set_image(url=f"{ctx.author.avatar_url}")
     else:
