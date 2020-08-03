@@ -90,12 +90,6 @@ async def on_message(message):
             await message.channel.send('failed to remove pass')
             print(f"Error : {e}")
 
-    elif str(message.content).lower() == "=av":
-        embed = discord.Embed(title=f"{message.author}")
-        embed.set_image(url=f"{message.author.avatar_url}")
-        await message.channel.send(embed=embed)
-
-
     elif check_if_asking_price_xD(str(message.content).lower()):
         await message.channel.send(f"{random.choice(bhendi_prices)} {random.choice([' ', 'ka sir', 'ka bhaiya'])}")
 
@@ -206,7 +200,7 @@ async def av(ctx, user : discord.Member = None):
         embed.set_image(url=f"{ctx.author.avatar_url}")
     else:
         if isinstance(user, discord.Member):
-            embed = discord.Embed(title=f"{user.author}")
+            embed = discord.Embed(title=f"{user}")
             embed.set_image(url=f"{ctx.author.avatar_url}")
         else:
             embed = discord.Embed(title=f"Error", description="Please provide a valid user")
