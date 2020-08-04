@@ -3,7 +3,6 @@ import requests
 import json
 import random
 from discord.ext import tasks, commands
-from discord import Embeds
 import praw
 from VARIABLES_ import *
 from FUNCTIONS_ import *
@@ -93,24 +92,6 @@ async def on_message(message):
 
     elif check_if_asking_price_xD(str(message.content).lower()):
         await message.channel.send(f"{random.choice(bhendi_prices)} {random.choice([' ', 'ka sir', 'ka bhaiya'])}")
-    
-    elif str(message.content).lower() == "insult me":
-      import time
-      res=requests.get(url='https://evilinsult.com/generate_insult.php?lang=en&type=json')
-      d=res.json()
-      insult=d['insult']
-                                   
-      e1 = Embed(color=0xfffb00, title='Thinking')
-      e1.set_author(name='Bhendi',icon_url='https://media.giphy.com/media/xTkcEQACH24SMPxIQg/giphy.gif')
-                                   
-      e2 = Embed(color=0x42c42b, title=insult)
-      e2.set_author(name='Bhendi')
-      e2.set_thumbnail(url='https://media.giphy.com/media/2pjspMQCi70k/giphy.gif')
-                                   
-      msg= await message.channel.send(embed=e1)
-      time.sleep(3)
-      await msg.edit(embed=e2)
-
 
     # Counters
     elif check_counted_words_present(str(message.content)) != None:
@@ -210,6 +191,21 @@ async def on_message_edit(before, after):
 
             if len(EDITED_MESSAGES) > 5:
                 del EDITED_MESSAGES[0]
+                            
+@client.command(aliases=['insult ','insult me','Insult'])     #a fun evil insult command 
+async def insult(ctx):
+    import time
+    res=requests.get(url='https://evilinsult.com/generate_insult.php?lang=en&type=json')
+    d=res.json()
+    insult=d['insult']                       
+    e1 = discord.Embed(color=0xfffb00, title='Thinking')
+    e1.set_author(name='Bhendi',icon_url='https://media.giphy.com/media/xTkcEQACH24SMPxIQg/giphy.gif')                      
+    e2 = discord.Embed(color=0x42c42b, title=insult)
+    e2.set_author(name='Bhendi')
+    e2.set_thumbnail(url='https://media.giphy.com/media/2pjspMQCi70k/giphy.gif')                              
+    msg= await ctx.send(embed=e1)
+    time.sleep(3)
+    await msg.edit(embed=e2)
 
 
 @client.command()
