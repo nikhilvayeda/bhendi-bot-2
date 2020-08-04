@@ -7,6 +7,7 @@ import praw
 from VARIABLES_ import *
 from FUNCTIONS_ import *
 from RANDOM_REPLIES import RandomReply
+import time
 
 client = commands.Bot(command_prefix="=")
 
@@ -194,7 +195,6 @@ async def on_message_edit(before, after):
                             
 @client.command(aliases=['insult ','insult me','Insult'])     #a fun evil insult command 
 async def insult(ctx):
-    import time
     res=requests.get(url='https://evilinsult.com/generate_insult.php?lang=en&type=json')
     d=res.json()
     insult=d['insult']                       
