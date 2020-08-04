@@ -195,17 +195,20 @@ async def on_message_edit(before, after):
                             
 @client.command(aliases=['insult ','insult me','Insult'])     #a fun evil insult command 
 async def insult(ctx):
-    res=requests.get(url='https://evilinsult.com/generate_insult.php?lang=en&type=json')
-    d=res.json()
-    insult=d['insult']                       
-    e1 = discord.Embed(color=0xfffb00, title='Thinking')
-    e1.set_author(name='Bhendi',icon_url='https://media.giphy.com/media/xTkcEQACH24SMPxIQg/giphy.gif')                      
-    e2 = discord.Embed(color=0x42c42b, title=insult)
-    e2.set_author(name='Bhendi')
-    e2.set_thumbnail(url='https://media.giphy.com/media/2pjspMQCi70k/giphy.gif')                              
-    msg= await ctx.send(embed=e1)
+    RES=requests.get(url='https://evilinsult.com/generate_insult.php?lang=en&type=json')
+    D=RES.json()
+    INSULT=D['insult']  
+                                   
+    E_THINK = discord.Embed(color=0xfffb00, title='Thinking')
+    E_THINK.set_author(name='Bhendi',icon_url='https://media.giphy.com/media/xTkcEQACH24SMPxIQg/giphy.gif')    
+                                   
+    E_INSULT = discord.Embed(color=0x42c42b, title=INSULT)
+    E_INSULT.set_author(name='Bhendi')
+    E_INSULT.set_thumbnail(url='https://media.giphy.com/media/2pjspMQCi70k/giphy.gif')    
+                                   
+    msg= await ctx.send(embed=E_THINK)
     time.sleep(3)
-    await msg.edit(embed=e2)
+    await msg.edit(embed=E_INSULT)
 
 
 @client.command()
