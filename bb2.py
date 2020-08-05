@@ -208,7 +208,7 @@ async def repeat(ctx, *, content=None):
         if len(content) > 0:
             embed = discord.Embed(title="  ")
             embed.add_field(name=">_<", value=f"{content}")
-            ctx.send(embed=embed)
+            await ctx.send(embed=embed)
 
 # MEMES
 res = praw.Reddit(client_id=REDDIT_KEY, client_secret=REDDIT_SECRET,
