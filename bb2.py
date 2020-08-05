@@ -156,7 +156,7 @@ async def on_raw_message_delete(payload):
     if payload.guild_id == SERVER_ID:
         if payload.cached_message != None:
             if not payload.cached_message.author.bot:
-                if 0 < payload.cached_message.content < 1024:
+                if 0 < len(payload.cached_message.content) < 1024:
                     if str(payload.cached_message.content).lower()[:7] == "=repeat":
                         if len(str(payload.cached_message.content)[7:]) > 0:
                             embed = discord.Embed(title=f"__**=repeat Command Message Deleted**__")
@@ -173,7 +173,7 @@ async def on_raw_message_delete(payload):
 @client.event
 async def on_message_edit(before, after):
     if before.guild.id == SERVER_ID and not before.author.bot:
-        if 0 < before.content < 1024 and 0 < after.content < 1024:
+        if 0 < len(before.content) < 1024 and 0 < len(after.content) < 1024:
 
             if str(before.content).lower()[:7] == "=repeat":
                 if len(str(before.content)[7:]) > 0:
