@@ -42,7 +42,7 @@ Be sure to read the rules in <#{RULES_CHANNEL_ID}>. Go have a chat with the memb
             embed.add_field(name="Member Count", value=f"#{_total_member + 1} member")
             embed.set_image(url="https://cdn.discordapp.com/attachments/722370864229646377/733302632977924146/image0.gif")
             await wel_come_channel.send(embed=embed)
-            update_member_count_(_total_member)
+            await update_member_count_(_total_member)
 
 @client.event
 async def on_member_remove(member):
@@ -58,7 +58,7 @@ async def on_member_remove(member):
                 if not m.bot:
                     _total_member += 1
 
-            update_member_count_(_total_member)
+            await update_member_count_(_total_member)
 
 
 @client.event
@@ -260,7 +260,7 @@ async def update_member_count(ctx):
             if not m.bot:
                 _total_member += 1
 
-        update_member_count_(_total_member)
+        await update_member_count_(_total_member)
 
 
 
