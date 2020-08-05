@@ -17,7 +17,6 @@ EDITED_MESSAGES = []
 
 @client.event
 async def on_ready():
-
     update_memes()
     send_meme.start()
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="bhendi.mp3"))
@@ -26,7 +25,6 @@ async def on_ready():
 
 @client.event
 async def on_member_join(member):
-
     if str(member.guild) == SERVER_NAME:
         wel_come_channel = client.get_channel(WELCOME_CHANNEL_ID)
         if wel_come_channel is not None:
@@ -110,31 +108,6 @@ async def on_message(message):
         if str(message.content)[6:] in counted_words:
             await message.channel.send(f"total {str(message.content[6:])} : {total_counteded[str(message.content)[6:]]}")
 
-    elif str(message.content).lower() == "=deleted":
-        embed = discord.Embed(title="__**Last Deleted Messages**__")
-
-        if len(DELETED_MESSAGES) > 0:
-            for msg in DELETED_MESSAGES:
-                embed.add_field(name=f"By {msg['author']}", value=f'Message : **{msg["message"]}**\n¯\n_',
-                                inline=False)
-        else:
-            embed.add_field(name="No message was deleted after I woke up", value="¯\\_(ツ)_/¯")
-
-        await message.channel.send(embed=embed)
-
-
-    elif str(message.content).lower() == "=edited":
-        embed = discord.Embed(title="__**Last Edited Messages**__")
-
-        if len(EDITED_MESSAGES) > 0:
-            for msg in EDITED_MESSAGES:
-                embed.add_field(name=f"by {msg['author']}",
-                                value=f"Original Message : {msg['message_before']}\nEdited Message : {msg['message_after']}\n¯\n_",
-                                inline=False)
-        else:
-            embed.add_field(name="No message was edited after I woke up", value="¯\\_(ツ)_/¯")
-
-        await message.channel.send(embed=embed)
 
     elif str(message.content).lower() == "=source":
         _msg = f"Here's the repository link, fork the repo, make changes, then create a pull request.\n {REPO_LINK}"
@@ -163,6 +136,7 @@ async def on_raw_message_delete(payload):
                         DELETED_MESSAGES.append(_msg)
                         if len(DELETED_MESSAGES) > 5:
                             del DELETED_MESSAGES[0]
+
 
 @client.event
 async def on_message_edit(before, after):
@@ -207,7 +181,7 @@ async def insult(ctx):
 
 
 @client.command()
-async def av(ctx, user : discord.Member = None):
+async def av(ctx, user : discord.Member=None):
     if user == None:
         embed = discord.Embed(title=f"{ctx.author}")
         embed.set_image(url=f"{ctx.author.avatar_url}")
@@ -220,6 +194,7 @@ async def av(ctx, user : discord.Member = None):
 
     await ctx.send(embed=embed)
 
+
 @client.command()
 async def repeat(ctx, *, content=None):
     if content != None:
@@ -227,6 +202,36 @@ async def repeat(ctx, *, content=None):
             embed = discord.Embed(title="  ")
             embed.add_field(name=">_<", value=f"{content}")
             await ctx.send(embed=embed)
+
+
+@client.command()
+async def edited(ctx):
+    embed = discord.Embed(title="__**Last Edited Messages**__")
+
+    if len(EDITED_MESSAGES) > 0:
+        for msg in EDITED_MESSAGES:
+            embed.add_field(name=f"by {msg['author']}",
+                            value=f"Original Message : {msg['message_before']}\nEdited Message : {msg['message_after']}\n¯\n_",
+                            inline=False)
+    else:
+        embed.add_field(name="No message was edited after I woke up", value="¯\\_(ツ)_/¯")
+
+    await ctx.send(embed=embed)
+
+
+@client.command()
+async def deleted(ctx):
+    embed = discord.Embed(title="__**Last Deleted Messages**__")
+
+    if len(DELETED_MESSAGES) > 0:
+        for msg in DELETED_MESSAGES:
+            embed.add_field(name=f"By {msg['author']}", value=f'Message : **{msg["message"]}**\n¯\n_',
+                            inline=False)
+    else:
+        embed.add_field(name="No message was deleted after I woke up", value="¯\\_(ツ)_/¯")
+
+    await ctx.send(embed=embed)
+
 
 # MEMES
 res = praw.Reddit(client_id=REDDIT_KEY, client_secret=REDDIT_SECRET,
