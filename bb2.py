@@ -110,12 +110,6 @@ async def on_message(message):
         if str(message.content)[6:] in counted_words:
             await message.channel.send(f"total {str(message.content[6:])} : {total_counteded[str(message.content)[6:]]}")
 
-    elif str(message.content).lower()[:7] == "=repeat":
-        if len(str(message.content)[7:]) > 0:
-            embed = discord.Embed(title=f" ")
-            embed.add_field(name=">_<", value=f"{message.content[7:]}")
-            await message.channel.send(embed=embed)
-
     elif str(message.content).lower() == "=deleted":
         embed = discord.Embed(title="__**Last Deleted Messages**__")
 
@@ -207,6 +201,14 @@ async def av(ctx, user : discord.Member = None):
             embed = discord.Embed(title=f"Error", description="Please provide a valid user")
 
     await ctx.send(embed=embed)
+
+@client.command()
+async def repeat(ctx, *, content=None):
+    if content != None:
+        if len(content) > 0:
+            embed = discord.Embed(title="  ")
+            embed.add_field(name=">_<", value=f"{content}")
+            ctx.send(embed=embed)
 
 # MEMES
 res = praw.Reddit(client_id=REDDIT_KEY, client_secret=REDDIT_SECRET,
