@@ -22,6 +22,9 @@ async def on_ready():
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="bhendi.mp3"))
     print(f'We have logged in as {client.user}')
 
+async def update_member_count_(count):
+    _members_channel = client.get_channel(MEMBER_COUNT_CHANNEL_ID)
+    await _members_channel.edit(name=f"Members : {_members_channel}")
 
 @client.event
 async def on_member_join(member):
@@ -39,6 +42,7 @@ Be sure to read the rules in <#{RULES_CHANNEL_ID}>. Go have a chat with the memb
             embed.add_field(name="Member Count", value=f"#{_total_member + 1} member")
             embed.set_image(url="https://cdn.discordapp.com/attachments/722370864229646377/733302632977924146/image0.gif")
             await wel_come_channel.send(embed=embed)
+            update_member_count_(_total_member)
 
 @client.event
 async def on_member_remove(member):
@@ -48,6 +52,13 @@ async def on_member_remove(member):
             embed = discord.Embed(title=f"{member} has left the server. Can we get some F please")
             embed.set_image(url="https://cdn.discordapp.com/attachments/729979069248176162/731784988009168906/image0.gif")
             await leave_channel.send(embed=embed)
+
+            _total_member = 0
+            for m in leave_channel.guild.members:
+                if not m.bot:
+                    _total_member += 1
+
+            update_member_count_(_total_member)
 
 
 @client.event
@@ -165,19 +176,25 @@ async def on_message_edit(before, after):
 @client.command()
 async def insult(ctx):
     RES = requests.get(url='https://evilinsult.com/generate_insult.php?lang=en&type=json')
-    D = RES.json()
-    INSULT = D['insult']
+    if RES.status_code == 200:
+        try:
+            D = RES.json()
+            INSULT = D['insult']
 
-    embed_think = discord.Embed(color=0xfffb00, title='Thinking')
-    embed_think.set_author(name='Bhendi', icon_url='https://media.giphy.com/media/xTkcEQACH24SMPxIQg/giphy.gif')
+        except Exception as e:
+            print("Error in response :", e)
+            return None
 
-    embed = discord.Embed(color=0x42c42b, title=INSULT)
-    embed.set_author(name='Bhendi')
-    embed.set_thumbnail(url='https://media.giphy.com/media/2pjspMQCi70k/giphy.gif')
+        embed_think = discord.Embed(color=0xfffb00, title='Thinking')
+        embed_think.set_author(name='Bhendi', icon_url='https://media.giphy.com/media/xTkcEQACH24SMPxIQg/giphy.gif')
 
-    msg = await ctx.send(embed=embed_think)
-    time.sleep(3)
-    await msg.edit(embed = embed)
+        embed = discord.Embed(color=0x42c42b, title=INSULT)
+        embed.set_author(name='Bhendi')
+        embed.set_thumbnail(url='https://media.giphy.com/media/2pjspMQCi70k/giphy.gif')
+
+        msg = await ctx.send(embed=embed_think)
+        time.sleep(3)
+        await msg.edit(embed = embed)
 
 
 @client.command()
@@ -231,6 +248,20 @@ async def deleted(ctx):
         embed.add_field(name="No message was deleted after I woke up", value="¯\\_(ツ)_/¯")
 
     await ctx.send(embed=embed)
+
+
+@client.command()
+@commands.has_any_role(MODS_ROLE_ID, ADMIN_ROLE_ID, TECHNIKAL_ROLE_ID)
+async def update_member_count(ctx):
+    if ctx.guild.id == SERVER_ID:
+        _total_member = 0
+
+        for m in ctx.guild.members:
+            if not m.bot:
+                _total_member += 1
+
+        update_member_count_(_total_member)
+
 
 
 # MEMES
