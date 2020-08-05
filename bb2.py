@@ -24,7 +24,7 @@ async def on_ready():
 
 async def update_member_count_(count):
     _members_channel = client.get_channel(MEMBER_COUNT_CHANNEL_ID)
-    await _members_channel.edit(name=f"Members : {_members_channel}")
+    await _members_channel.edit(name=f"Members : {count}")
 
 @client.event
 async def on_member_join(member):
