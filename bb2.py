@@ -76,6 +76,7 @@ async def on_message(message):
 
     if message.content.lower().find("binod") != -1:
         await message.delete()
+        return None
 
     if reply != None:
         await message.channel.send(reply)
