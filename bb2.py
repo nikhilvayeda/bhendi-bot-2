@@ -77,9 +77,6 @@ async def on_message(message):
     if reply != None:
         await message.channel.send(reply)
 
-    elif str(message.content).lower() == "bruh":
-        await message.add_reaction('<:bhau:730130181947261080>')
-
     elif str(message.content).lower() == "=pass":
         role = discord.utils.get(message.guild.roles, name="edgy pass")
         user = message.author
