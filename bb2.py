@@ -74,7 +74,7 @@ async def on_message(message):
 
     reply = RandomReply(str(message.content))
 
-    if message.lower().find("binod") != -1:
+    if message.content.lower().find("binod") != -1:
         await message.delete()
 
     if reply != None:
