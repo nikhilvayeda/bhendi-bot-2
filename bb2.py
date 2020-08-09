@@ -196,11 +196,11 @@ async def insult(ctx):
 @client.command()
 async def av(ctx, user : discord.Member=None):
     if user == None:
-        embed = discord.Embed(title=f"{ctx.author}")
+        embed = discord.Embed(title=f"{ctx.author}", color=discord.Colour.Blue())
         embed.set_image(url=f"{ctx.author.avatar_url}")
     else:
         if isinstance(user, discord.member.Member):
-            embed = discord.Embed(title=f"{user}")
+            embed = discord.Embed(title=f"{user}", color=discord.Colour.Blue())
             embed.set_image(url=f"{user.avatar_url}")
         else:
             embed = discord.Embed(title=f"Error", description="Please provide a valid user", color=discord.Colour.Blue())
