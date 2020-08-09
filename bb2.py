@@ -36,7 +36,7 @@ async def on_member_join(member):
                 if not m.bot:
                     _total_member += 1
 
-            embed = discord.Embed(title="New Member!")
+            embed = discord.Embed(title="New Member!", color=discord.Colour.Blue())
             embed.add_field(name=f"Hello", value=f"""Hello {member.mention}!({member}), Welcome to Say Station. \n
 Be sure to read the rules in <#{RULES_CHANNEL_ID}>. Go have a chat with the members in <#{GENERAL_CHANNEL_ID}>""" )
             embed.add_field(name="Member Count", value=f"#{_total_member + 1} member")
@@ -49,7 +49,7 @@ async def on_member_remove(member):
     if str(member.guild) == SERVER_NAME:
         leave_channel = client.get_channel(WELCOME_CHANNEL_ID)
         if leave_channel is not None:
-            embed = discord.Embed(title=f"{member} has left the server. Can we get some F please")
+            embed = discord.Embed(title=f"{member} has left the server. Can we get some F please", color=discord.Colour.Red())
             embed.set_image(url="https://cdn.discordapp.com/attachments/729979069248176162/731784988009168906/image0.gif")
             await leave_channel.send(embed=embed)
 
@@ -203,7 +203,7 @@ async def av(ctx, user : discord.Member=None):
             embed = discord.Embed(title=f"{user}")
             embed.set_image(url=f"{user.avatar_url}")
         else:
-            embed = discord.Embed(title=f"Error", description="Please provide a valid user")
+            embed = discord.Embed(title=f"Error", description="Please provide a valid user", color=discord.Colour.Blue())
 
     await ctx.send(embed=embed)
 
