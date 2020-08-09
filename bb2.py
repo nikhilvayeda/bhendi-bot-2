@@ -36,7 +36,7 @@ async def on_member_join(member):
                 if not m.bot:
                     _total_member += 1
 
-            embed = discord.Embed(title="New Member!", color=discord.Colour.Blue())
+            embed = discord.Embed(title="New Member!", color=discord.Colour.blue())
             embed.add_field(name=f"Hello", value=f"""Hello {member.mention}!({member}), Welcome to Say Station. \n
 Be sure to read the rules in <#{RULES_CHANNEL_ID}>. Go have a chat with the members in <#{GENERAL_CHANNEL_ID}>""" )
             embed.add_field(name="Member Count", value=f"#{_total_member + 1} member")
@@ -49,7 +49,7 @@ async def on_member_remove(member):
     if str(member.guild) == SERVER_NAME:
         leave_channel = client.get_channel(WELCOME_CHANNEL_ID)
         if leave_channel is not None:
-            embed = discord.Embed(title=f"{member} has left the server. Can we get some F please", color=discord.Colour.Red())
+            embed = discord.Embed(title=f"{member} has left the server. Can we get some F please", color=discord.Colour.red())
             embed.set_image(url="https://cdn.discordapp.com/attachments/729979069248176162/731784988009168906/image0.gif")
             await leave_channel.send(embed=embed)
 
@@ -196,14 +196,14 @@ async def insult(ctx):
 @client.command()
 async def av(ctx, user : discord.Member=None):
     if user == None:
-        embed = discord.Embed(title=f"{ctx.author}", color=discord.Colour.Blue())
+        embed = discord.Embed(title=f"{ctx.author}", color=discord.Colour.blue())
         embed.set_image(url=f"{ctx.author.avatar_url}")
     else:
         if isinstance(user, discord.member.Member):
-            embed = discord.Embed(title=f"{user}", color=discord.Colour.Blue())
+            embed = discord.Embed(title=f"{user}", color=discord.Colour.blue())
             embed.set_image(url=f"{user.avatar_url}")
         else:
-            embed = discord.Embed(title=f"Error", description="Please provide a valid user", color=discord.Colour.Blue())
+            embed = discord.Embed(title=f"Error", description="Please provide a valid user", color=discord.Colour.blue())
 
     await ctx.send(embed=embed)
 
@@ -219,7 +219,7 @@ async def repeat(ctx, *, content=None):
 
 @client.command()
 async def edited(ctx):
-    embed = discord.Embed(title="__**Last Edited Messages**__")
+    embed = discord.Embed(title="__**Last Edited Messages**__", color=discord.Colour.blue())
 
     if len(EDITED_MESSAGES) > 0:
         for msg in EDITED_MESSAGES:
@@ -234,7 +234,7 @@ async def edited(ctx):
 
 @client.command()
 async def deleted(ctx):
-    embed = discord.Embed(title="__**Last Deleted Messages**__")
+    embed = discord.Embed(title="__**Last Deleted Messages**__", color=discord.Colour.blue())
 
     if len(DELETED_MESSAGES) > 0:
         for msg in DELETED_MESSAGES:
