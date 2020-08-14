@@ -7,9 +7,6 @@ def RandomReply(message_raw):
     if message == "hi":
         return "Hello!"
 
-    elif message.find('ooo') != -1:
-        return "Bhendi, bhendi!"
-
     elif message == "hello":
         return "Hi!"
 
