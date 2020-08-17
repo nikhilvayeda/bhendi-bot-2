@@ -105,8 +105,8 @@ async def on_message(message):
         await message.channel.send(f"{random.choice(bhendi_prices)} {random.choice([' ', 'ka sir', 'ka bhaiya'])}")
 
     # Counters
-    elif check_counted_words_present(str(message.content)) != None:
-        index_of_word_counted = check_counted_words_present(str(message.content))
+    elif check_counted_words_present(str(message.content.lower())) != None:
+        index_of_word_counted = check_counted_words_present(str(message.content.lower()))
         word_counted = counted_words[index_of_word_counted]
         temp_total_counteded[word_counted] += 1
         total_counteded[word_counted] += 1
