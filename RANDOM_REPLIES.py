@@ -32,14 +32,14 @@ def RandomReply(message_raw):
     elif message == "i wanna kill myself":
         return "**Dont do it you have more to accomplish suicide help line India 091529 87821**"
 
-    elif message == "uh oh":
-        return "Stinky"
+    elif message == "god":
+        return "Pls forgive me"
 
     elif message == "general kenobi":
         return "**Hello there - Bhendi Bot v2.0 by Monke - General Kenobi**"
 
     elif message == "monke":
-        return "Wholesome :hugging:"
+        return "He died"
 
     else: return None
 
