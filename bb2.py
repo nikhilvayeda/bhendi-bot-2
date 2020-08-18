@@ -28,7 +28,7 @@ async def update_member_count_(count):
 
 @client.event
 async def on_member_join(member):
-    if str(member.guild) == SERVER_NAME:
+    if str(member.guild) == SERVER_NAME and not str(member) == "chief141#3455":
         wel_come_channel = client.get_channel(WELCOME_CHANNEL_ID)
         if wel_come_channel is not None:
             _total_member = 0
@@ -46,7 +46,7 @@ Be sure to read the rules in <#{RULES_CHANNEL_ID}>. Go have a chat with the memb
 
 @client.event
 async def on_member_remove(member):
-    if str(member.guild) == SERVER_NAME:
+    if str(member.guild) == SERVER_NAME and not str(member) == "chief141#3455":
         leave_channel = client.get_channel(WELCOME_CHANNEL_ID)
         if leave_channel is not None:
             embed = discord.Embed(title=f"{member} has left the server. Can we get some F please", color=discord.Colour.red())
