@@ -36,10 +36,13 @@ def RandomReply(message_raw):
         return "He died :pensive:"
 
     elif message == "general kenobi":
-        return "**Hello there - Bhendi Bot v2.0 by Monke - General Kenobi**"
+        return "**Hello there - Bhendi Bot v2.0 by G O D - General Kenobi**"
 
     elif message == "monke":
         return "He died :pensive:"
+    
+    elif message == "hello there":
+        return "General Kenobi - Bhendi Bot v2.0 by G O D"
 
     else: return None
 
