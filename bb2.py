@@ -218,6 +218,7 @@ async def repeat(ctx, *, content=None):
 
 
 @client.command()
+@commands.has_any_role(MODS_ROLE_ID, ADMIN_ROLE_ID, TECHNIKAL_ROLE_ID)
 async def edited(ctx):
     embed = discord.Embed(title="__**Last Edited Messages**__", color=discord.Colour.blue())
 
@@ -233,6 +234,7 @@ async def edited(ctx):
 
 
 @client.command()
+@commands.has_any_role(MODS_ROLE_ID, ADMIN_ROLE_ID, TECHNIKAL_ROLE_ID)
 async def deleted(ctx):
     embed = discord.Embed(title="__**Last Deleted Messages**__", color=discord.Colour.blue())
 
