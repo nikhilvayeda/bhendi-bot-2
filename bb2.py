@@ -41,7 +41,7 @@ async def on_member_join(member):
 Be sure to read the rules in <#{RULES_CHANNEL_ID}>. Go have a chat with the members in <#{GENERAL_CHANNEL_ID}>""" )
             embed.add_field(name="Member Count", value=f"#{_total_member + 1} member")
             embed.set_image(url="https://cdn.discordapp.com/attachments/722370864229646377/733302632977924146/image0.gif")
-            await wel_come_channel.send(embed=embed)
+            await wel_come_channel.send(embed=embed, member.mention)
             await update_member_count_(_total_member)
 
 @client.event
