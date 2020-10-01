@@ -209,11 +209,11 @@ async def av(ctx, user : discord.Member=None):
 
 
 @client.command()
-async def repeat(ctx, *, content=None):
-    if content != None:
-        if len(content) > 0:
+async def repeat(ctx, *, _content=None):
+    if _content != None:
+        if len(_content) > 0:
             embed = discord.Embed(title="  ")
-            embed.add_field(name=">_<", value=f"{content}")
+            embed.add_field(name=">_<", value=f"{_content}")
             await ctx.send(embed=embed)
 
 
