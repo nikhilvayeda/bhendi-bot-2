@@ -33,3 +33,4 @@ SERVER_ID = 722336877524418620
 SERVER_NAME = "Say Station"
 
 REPO_LINK = "https://github.com/nikhilvayeda/bhendi-bot-2"
+NEW_REPO_LINK = "https://github.com/nikhilvayeda/bhendi-bot-3"
