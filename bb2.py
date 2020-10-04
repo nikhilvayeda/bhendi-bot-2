@@ -10,6 +10,7 @@ from RANDOM_REPLIES import RandomReply
 import time
 
 client = commands.Bot(command_prefix="=")
+client.remove_command("help")
 
 total_counteded = {"bruh" : get_total_word_counted(0), "nice" : get_total_word_counted(1)}
 DELETED_MESSAGES = []
