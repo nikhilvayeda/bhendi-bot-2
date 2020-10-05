@@ -205,7 +205,7 @@ async def av(ctx, user : discord.Member=None):
             embed = discord.Embed(title=f"{user}", color=discord.Colour.blue())
             embed.set_image(url=f"{user.avatar_url}")
         else:
-            embed = discord.Embed(title=f"Error", description="Please provide a valid user", color=discord.Colour.blue())
+            await ctx.send(f"Couldn't find the user **{user}**")
 
     await ctx.send(embed=embed)
 
