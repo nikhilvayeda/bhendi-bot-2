@@ -1,9 +1,9 @@
 import os
 
-dreamlo_url = os.getenv('dreamlo_url')
-TOKEN = os.getenv('token')
-REDDIT_KEY = os.getenv('KEY')
-REDDIT_SECRET = os.getenv("SECRET")
+dreamlo_url = os.getenv('DREAMLO_URL')
+TOKEN = os.getenv('BOT_TOKEN')
+REDDIT_KEY = os.getenv('REDDIT_KEY')
+REDDIT_SECRET = os.getenv('REDDIT_SECRET')
 
 total_counteded = {"bruh" : 0, "nice" : 0}
 temp_total_counteded = {"bruh" : 0, "nice" : 0}
