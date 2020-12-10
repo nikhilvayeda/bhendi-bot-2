@@ -75,12 +75,9 @@ async def on_message(message):
 
     reply = RandomReply(str(message.content))
 
-    if (message.content.lower()).find("binod") != -1:
-        await message.delete()
-        return None
-
     if reply != None:
-        await message.channel.send(reply)
+        msg = await message.channel.send(reply)
+        await msg.add_reaction("<:deepfriedlaugh:740568388673339583>")
 
     elif str(message.content).lower() == "=pass":
         role = discord.utils.get(message.guild.roles, name="edgy pass")
