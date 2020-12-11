@@ -70,7 +70,7 @@ async def on_message(message):
         return None
 
     if message.guild == None:
-        await message.channel.send("Server mein anna")
+        await message.channel.send("Server mein aana <a:vibincet:775941439648432139>")
         return None
 
     reply = RandomReply(str(message.content))
